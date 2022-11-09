@@ -1,0 +1,41 @@
+How to install tomcat and setup for windows
+
+Step1: Download file zip
+Step2: Configure server xml file
+	edit file by code
+	    <Connector port="8080" protocol="HTTP/1.1"
+               connectionTimeout="20000"
+               redirectPort="8443" />
+Step3 : Configure web.xml, context.xml
+	web.xml :
+<servlet>
+  <servlet-name>default</servlet-name>
+  <servlet-class>org.apache.catalina.servlets.DefaultServlet</servlet-class>
+  <init-param>
+    <param-name>debug</param-name>
+    <param-value>0</param-value>
+  </init-param>
+  <init-param>
+    <param-name>listings</param-name>
+    <param-value>true</param-value>
+  </init-param>
+  <load-on-startup>1</load-on-startup>
+</servlet>
+
+	context.xml
+<Context reloadable="true" crossContext="true" parallelAnnotationScanning="true">
+   ......
+   ......
+</Context>
+
+Step4: Start Server
+
+c:                           // Change drive
+cd \myWebProject\tomcat\bin  // Change directory to your Tomcat's binary directory
+startup                      // Run startup.bat to start tomcat server
+
+Step5: Setup setx JAVA_HOME C:\java\jdk1.8.0_60
+
+
+##Check java property
+$java -XshowSettings:properties -version
