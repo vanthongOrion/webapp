@@ -39,3 +39,7 @@ Step5: Setup setx JAVA_HOME C:\java\jdk1.8.0_60
 
 ##Check java property
 $java -XshowSettings:properties -version
+
+##fix obakemoji 
+go to ${TOMCAT_HOME}/conf/logging.properties
+edit java.util.logging.ConsoleHandler.encoding = SJIS
