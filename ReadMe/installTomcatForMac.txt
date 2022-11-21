@@ -1,0 +1,54 @@
+Step 1: Download Tomcat
+Download Jakarta Tomcat from the Tomcat home page, and get the binary version - I_downloaded jakarta-tomcat-5.0.27.tar.gz.
+Extract the files (unless your browser automatically extracts them).
+Navigate (using the Finder) to Macintosh HD > Library.
+If there is not already a folder in Macintosh HD > Library called Tomcat, then create one.
+If there is already a Tomcat folder (presumably from an out-of-date installation), delete all the files already in that folder.
+Step 2: Extract tomcat archive
+Copy all the unstuffed files from the jakarta-tomcat-5.0.27.tar.gz download and put all the files into the Tomcat folder.
+I just named it Tomcat as it saves some typing in the Terminal (smile)
+So the directory structure becomes:
+Macintosh HD > Library > Tomcat > <extracted files>
+Step 3: Configure tomcat-users.xml
+Open the /Library/Tomcat/conf/tomcat-users.xml file with a plain text editor. The default Tomcat installation only has the basic roles and users set up.
+What is configured as default is:
+ <?xml version='1.0' encoding='utf-8'?>
+ <tomcat-users>
+   <role rolename="tomcat"/>
+   <role rolename="role1"/>
+   <user username="tomcat" password="tomcat" roles="tomcat"/>
+   <user username="both" password="tomcat" roles="tomcat,role1"/>
+   <user username="role1" password="tomcat" roles="role1"/>
+ </tomcat-users>
+An example of what it should look like follows:
+ <?xml version='1.0' encoding='utf-8'?>
+ <tomcat-users>
+  <role rolename="tomcat"/>
+  <role rolename="role1"/>
+  <role rolename="manager"/>
+  <role rolename="admin"/>
+  <user username="tomcat" password="tomcat" roles="tomcat,admin,manager"/>
+  <user username="both" password="tomcat" roles="tomcat,role1"/>
+  <user username="role1" password="tomcat" roles="role1"/>
+ </tomcat-users>
+In this case a role, a user and password have been set up with the name tomcat. You can change this later.
+Step 4: Start Tomcat
+To start Tomcat, open a shell command prompt (using, for instance, the Terminal application).
+The path to Tomcat via the Finder is Macintosh HD > Library > Tomcat.
+But to get to that directory using the Terminal, type in:
+cd /Library/Tomcat/bin
+Do an ls - you should see a file called startup.sh.
+Any file in this directory ending in .sh can be executed in the terminal by putting a period and a slash before the file name (eg: startup.sh). The following example executes the tomcat startup script:
+./startup.sh && tail -f ../logs/catalina.out
+Terminal should display four lines looking something like this:
+Using CATALINA_BASE:   /library/tomcat
+Using CATALINA_HOME:   /library/tomcat
+Using CATALINA_TMPDIR: /library/tomcat/temp
+Using JAVA_HOME:       /Library/Java/Home
+Users-Computer:/library/tomcat/bin user$ 
+There are some notes and a couple of Preference Panes for automating the starting and stopping of Tomcat. After trying them all on five different computers - this is the simplest!
+Step 5: Test installation Open a browser window, and enter http://127.0.0.1:8080 - the default Tomcat page should open.
+If you click the Tomcat Administrator or Tomcat Manager links in the upper left hand of the default Tomcat page, you will be asked for a user name and password.
+As mentioned above, use tomcat for the user name, and tomcat for the password.
+By : Brynley Blake (31 August 2004)
+With considerable help from Joachim, Tracy, Tom, Samuel and Jonel from the Apple Web and Java Developer mailing lists.
