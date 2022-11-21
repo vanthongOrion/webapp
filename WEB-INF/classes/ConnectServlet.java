@@ -6,7 +6,7 @@ import jakarta.servlet.annotation.*;	//tomcat10
 //import javax.servlet.http.*;			//tomcat9
 //import javax.servlet.annotation.*;	//tomcat9
 
-@WebServlet("/sayhello")
+@WebServlet("/hello")
 public class ConnectServlet extends HttpServlet {
 	@Override
 	public void doGet(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException {
