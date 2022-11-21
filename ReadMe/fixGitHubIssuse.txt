@@ -1,0 +1,16 @@
+$$fix cannot push 
+
+Step 1 : remove and renew remote
+ $git remote -v
+ $git remote remove origin
+ $git remote add origin git@github.com:user/repo.git
+
+Step 2 : Create a PAT (Personal Access Token)
+ $Go to github ,In the Settings page, 
+  choose Developer settings > Developer settings > Personal access tokens in the left sidebar.
+ $And you should limit the scope to repo.
+
+Step 3 : reset the old password authentication 
+ $git config --global --unset credential.helper
+
+ Step 4 : search keychain and paste the password to github 
