@@ -1,0 +1,65 @@
+##Issue1: Remove file from ref and local
+$git rm -f <filename>
+
+##Issue2 : Cannot push
+
+*Step 1 : remove and renew remote
+ $git remote -v
+ $git remote remove origin
+ $git remote add origin git@github.com:user/repo.git
+
+*Step 2 : Create a PAT (Personal Access Token)
+ $Go to github ,In the Settings page, 
+  choose Developer settings > Developer settings > Personal access tokens in the left sidebar.
+ $And you should limit the scope to repo.
+
+*Step 3 : reset the old password authentication 
+ $git config --global --unset credential.helper
+
+*Step 4 : search keychain and paste the password to github 
+
+## how to fetch and pull
+
+*Prepare : Author identity 
+
+$  git config --global user.email "you@example.com"
+$  git config --global user.name "Your Name"
+
+//Step 1 : fetch
+$ git fetch
+
+//Step 2 : pull 
+$ git pull
+
+//Step 3 : push
+$ git push -u origin main
+
+
+Delete the most recent commit, keeping the work you've done:
+$ git reset --soft HEAD~1
+
+Delete the most recent commit, destroying the work you've done:
+$ git reset --hard HEAD~1
+
+$ git show-ref
+
+$ git push -u origin HEAD:main
+
+##Upstream 
+*See Log :
+$ git log
+
+*fetch
+$ git fetch upstream
+
+   
+*update
+$ git pull
+
+$ git checkout main
+> Switched to branch 'main'
+
+//Merge the changes from the upstream default branch - in this case, upstream/main - into your local default branch. This brings your fork's default branch into sync with the upstream repository, without losing your local changes.
+
+$ git merge upstream/main
+
