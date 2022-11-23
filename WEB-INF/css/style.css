@@ -1,0 +1,11 @@
+/* form css */
+
+form div{
+	padding: 12px;
+	border-bottom: 1px dashed #bec2c7;
+}
+input[type="submit"] {
+	margin: 20px;
+	width: 7em;
+}
+
