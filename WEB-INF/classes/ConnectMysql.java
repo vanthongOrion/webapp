@@ -18,6 +18,7 @@ public class ConnectMysql {
 			Class.forName("com.mysql.cj.jdbc.Driver");
 			//Use getConnetion method to connect to mysql
 			con = DriverManager.getConnection(url,user,pass);
+			System.out.println("Successfully connect to mysql");
 		}catch(Exception e){
 			e.printStackTrace();
 		}
@@ -28,8 +29,10 @@ public class ConnectMysql {
 		//Use try-catch with DriverManager
 		try {
 
-			st = con.createStatement();
+			st = con.createStatement(ResultSet.TYPE_SCROLL_SENSITIVE, ResultSet.CONCUR_UPDATABLE);
 			rs = st.executeQuery(query);
+			System.out.println("Successfully executeQuery : " + query);
+			// DBPrinter.printResultSet(rs);
 			return rs;
 
 		} catch(Exception e){
@@ -50,6 +53,7 @@ public class ConnectMysql {
 			preSt.setString(6,email);
 			int count;
 			count = preSt.executeUpdate();
+			System.out.println("Successfully execute Query: " + preSt.toString());
 			return count;
 			// con.close();
 		} catch (Exception e) {

@@ -61,9 +61,11 @@ public class InfoOutput extends HttpServlet {
 		if(query != null){
 			try{
 				rs = ConnectMysql.selectFrom(query);
+				// DBPrinter.printResultSet(rs);
+				// System.out.println(rs.next());
 				if(rs.next()){
 					rs.previous();
-					while(rs.next()){
+					 while(rs.next()){
 						regNo = rs.getString(1);
 						firstName = rs.getString(2);
 						lastName = rs.getString(3);
@@ -77,10 +79,10 @@ public class InfoOutput extends HttpServlet {
 						out.println("<p><b>Telephone Number</b> : " + phone + "</p>");
 						out.println("<p><b>Education</b> : " + education + "</p>");
 						out.println("<p><b>Email</b> : " + email + "</p>");		
-					}
+					 }
 				}else {
 					out.println("<h2>Don't match any student Info</h2>");							
-					// out.println("<p>XXXXXXXXXXXXXXX</p>"); //debug
+					// out.println("<p>XXXXXXXXXXXXXXX</p>"); 
 				}
 			}catch(Exception e){
 				out.println("<p><strong>Error SQL:" + e.getMessage() + "</strong></p>");
