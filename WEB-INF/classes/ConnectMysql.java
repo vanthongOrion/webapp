@@ -61,4 +61,23 @@ public class ConnectMysql {
 			return -1;
 		}
 	}
+
+	//for Exercise4
+	public static int insertInto(String empno,String name, String designation, String phone){
+		try {
+			int count;
+			preSt = con.prepareStatement("INSERT INTO employee(empno,name,designation,phone) values(?,?,?,?)");
+			preSt.setString(1,empno);
+			preSt.setString(2,name);
+			preSt.setString(3,designation);
+			preSt.setString(4,phone);
+			count = preSt.executeUpdate();
+			System.out.println("Successfully execute Update : " + preSt.toString());
+			System.out.println(count + " affect");
+			return count;
+		} catch(Exception e ){
+			e.printStackTrace();
+			return -1;
+		}
+	}
 }
