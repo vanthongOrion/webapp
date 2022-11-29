@@ -79,5 +79,23 @@ public class ConnectMysql {
 			e.printStackTrace();
 			return -1;
 		}
+	}	
+
+	//for queryproduct
+	public static int insertInto(String productid,String productname,int price){
+		try {
+			int count;
+			preSt = con.prepareStatement("INSERT INTO product(productid,productname,price) values(?,?,?)");
+			preSt.setString(1,productid);
+			preSt.setString(2,productname);
+			preSt.setInt(3,price);
+			count = preSt.executeUpdate();
+			System.out.println("Successfully execute Update : " + preSt.toString());
+			System.out.println(count + " affect");
+			return count;
+		} catch(Exception e ){
+			e.printStackTrace();
+			return -1;
+		}
 	}
 }
